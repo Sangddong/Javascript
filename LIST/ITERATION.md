@@ -121,9 +121,9 @@ console.log(newArr);
 */
 ```
 - The use of **parentheses** affects how return is handled.
-  - () or none use of parentheses:
+  - `( )` or none use of parentheses:
     > can be used without `return` statement.
-  - {} :
+  - `{ }` :
     > must be used with `return` statement
     
 ``` javascript
