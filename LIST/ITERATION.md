@@ -1,7 +1,7 @@
 ## ITERATION
 
-### 1. forEach
-(1) **What is `forEach`**
+### 1. forEach(callback)
+(1) **What is `forEach`**?
 - A method used to iterate over elements in an array.
 - It does **not modify** the original array and **cannot be stopped** at the middle of the iteration.
 - Unlike `map`, which returns a new array, `forEach` always returns `undefined` so **chaining is not possible**.
@@ -45,5 +45,48 @@ array 1,2,3,4,5 includes 2, and it's index is 1
 array 1,2,3,4,5 includes 3, and it's index is 2
 array 1,2,3,4,5 includes 4, and it's index is 3
 array 1,2,3,4,5 includes 5, and it's index is 4
+*/
+```
+
+### 2. map(callback)
+(1) **What is `map`**?
+- A method used to iterate over elements in an array and returns new Array so **chaining is possible**
+- If you don't use the returned array from `map`, it's considered an anti-pattern(=inefficient code). (In this case, use `forEach` or `for ... of` instead.)
+  
+(2) **Use of `map`**
+- Unlike `forEach`, `map` returns new Array.
+``` javascript
+const arr = [1, 2, 3, 4, 5];
+
+const newArrByMap = arr.map((element) => {
+  if (element % 2 == 0) return ++element;
+  else return 0;
+});
+
+const newArrByForEach = arr.forEach((element) => {
+  if (element % 2 == 0) return ++element;
+  else return 0;
+});
+
+console.log(arr);
+console.log(newArrByMap);
+console.log(newArrByForEach);
+/* log
+[ 1, 2, 3, 4, 5 ]
+[ 0, 3, 0, 5, 0 ]
+undefined
+*/
+```
+- `map` can be used with chaining.
+``` javascript
+const arr = [1, 2, 3, 4, 5];
+
+const doubledArr = arr
+  .map((element) => (element *= 2))
+  .filter((element) => element >= 3); // works because the callback returns the value (no braces used)
+
+console.log(doubledArr);
+/* log
+[ 4, 6, 8, 10 ]
 */
 ```
